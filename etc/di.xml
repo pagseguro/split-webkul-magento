@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PagBank Webkul PagBank Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Add Sub Seller to request -->
+    <type name="PagBank\SplitMagento\Gateway\Request\Split\ReciversDataRequest">
+        <plugin name="pagbank_webkul_add_sub_seller" type="PagBank\SplitWebkulMagento\Plugin\Gateway\Request\Split\SubSellerReciversDataRequest" sortOrder="10" />
+    </type>
+
+    <!-- Add Sub Seller to request in Pix -->
+    <type name="PagBank\SplitMagento\Gateway\Request\Split\Pix\ReciversDataRequest">
+        <plugin name="pagbank_webkul_add_sub_seller" type="PagBank\SplitWebkulMagento\Plugin\Gateway\Request\Split\SubSellerReciversDataRequest" sortOrder="10" />
+    </type>
+
+
+    <type name="PagBank\SplitWebkulMagento\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">SplitWebkulMagentoData</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">PagBank\SplitWebkulMagento\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

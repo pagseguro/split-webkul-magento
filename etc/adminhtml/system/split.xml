@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PagBank Split Magento Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="split" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+        <group id="webkul" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>App for Webkul</label>
+            <comment>To capture your seller's data, you can request an oAuth permission. Configure the APP.</comment>
+            <depends>
+                <field id="*/*/*/data_source">custom</field>
+            </depends>
+            <field id="app_client_id_prod" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>App Client Id</label>
+                <config_path>payment/pagbank_paymentmagento/app_client_id_prod</config_path>
+                <depends>
+                    <field id="*/*/settings/environment">production</field>
+                </depends>
+            </field>
+            <field id="app_redirect_uri_prod" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>App Redirect Uri</label>
+                <config_path>payment/pagbank_paymentmagento/app_redirect_uri_prod</config_path>
+                <depends>
+                    <field id="*/*/settings/environment">production</field>
+                </depends>
+            </field>
+            <field id="app_client_id_sandbox" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>App Client Id - Sandbox</label>
+                <config_path>payment/pagbank_paymentmagento/app_client_id_sandbox</config_path>
+                <depends>
+                    <field id="*/*/settings/environment">sandbox</field>
+                </depends>
+            </field>
+            <field id="app_redirect_uri_sandbox" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <label>App Redirect Uri - Sandbox</label>
+                <config_path>payment/pagbank_paymentmagento/app_redirect_uri_sandbox</config_path>
+                <depends>
+                    <field id="*/*/settings/environment">sandbox</field>
+                </depends>
+            </field>
+        </group>
+    </group>
+</include>

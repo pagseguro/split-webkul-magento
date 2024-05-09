@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PagBank Webkul PagBank Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="marketplace_userdata" resource="default" engine="innodb" comment="Marketplace User Data Table">
+        <column xsi:type="text" name="pag_bank_account_id" nullable="true" comment="PagBank Account Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

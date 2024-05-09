@@ -1,0 +1,52 @@
+<?php
+/**
+ * PagBank Webkul PagBank Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+
+$paymentInfo = $block->getPaymentInfo();
+$pagBankAccountId = $block->getPagBankAccountId();
+?>
+<div class="admin__fieldset-wrapper opened">
+    <div class="admin__fieldset-wrapper-title">
+        <strong class="title">
+            <span data-bind="text: label"><?= $block->escapeHtml(__('Payment Information')) ?></span>
+        </strong>
+    </div>
+    <?php if ($paymentInfo): ?>
+        <div class="admin__fieldset-wrapper-content">
+            <fieldset class="admin__fieldset">
+                <address>
+                   <?= /* @noEscape */ $paymentInfo; ?>
+                </address>
+            </fieldset>
+        </div>
+    <?php endif; ?>
+    <?php if ($pagBankAccountId): ?>
+        <div class="admin__fieldset-wrapper-content">
+            <div class="admin__fieldset-wrapper-title">
+                <strong class="title">
+                    <span data-bind="text: label"><?= $block->escapeHtml(__('PagBank Information')) ?></span>
+                </strong>
+            </div>
+            <fieldset class="admin__fieldset">
+                <address>
+                   <?= /* @noEscape */ $pagBankAccountId; ?>
+                </address>
+            </fieldset>
+        </div>
+    <?php endif; ?>
+    <?php if (!$paymentInfo && !$pagBankAccountId): ?>
+        <div class="admin__fieldset-wrapper-content">
+            <fieldset class="admin__fieldset">
+                <address>
+                   <?= $block->escapeHtml(__('Payment Information not filled by the Seller yet.')); ?>
+                </address>
+            </fieldset>
+        </div>
+    <?php endif; ?>
+</div>

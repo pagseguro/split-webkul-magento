@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Envio de informações privadas/confidênciais.
+    url: mailto:pagbank@o2ti.com?subject=Dados%20Privados%20-%20PagBank&body=Ol%C3%A1%2C%0D%0A%0D%0A
+    about: Por vezes pode ser necessário o envio de dados privados, use esse canal caso seja necessário.
+  - name: Solicitar Instação
+    url: mailto:pagbank@o2ti.com?subject=Instala%C3%A7%C3%A3o%20-%20PagBank&body=Ol%C3%A1%2C%0D%0A%0D%0AGostaria%20de%20solicitar%20o%20servi%C3%A7o%20gratuito%20de%20instala%C3%A7%C3%A3o%20do%20m%C3%B3dulo%20em%20minha%20loja%20Magento%202.
+    about: Contact us privately about potential security issues.

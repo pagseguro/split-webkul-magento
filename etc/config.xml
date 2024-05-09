@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PagBank Payment Magento Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <pagbank_paymentmagento>
+                <app_client_id_prod>c0ed90df-2c75-47fe-8f93-2a6635f1fce6</app_client_id_prod>
+                <app_redirect_uri_prod>https://pagbank-redirect.herokuapp.com/</app_redirect_uri_prod>
+                <app_client_id_sandbox>d047c5d1-94ce-4397-9f98-d4be5e6fb195</app_client_id_sandbox>
+                <app_redirect_uri_sandbox>https://pagbank-redirect.herokuapp.com/</app_redirect_uri_sandbox>
+            </pagbank_paymentmagento>
+        </payment>
+    </default>
+</config>

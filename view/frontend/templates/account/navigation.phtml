@@ -1,0 +1,29 @@
+<?php
+/**
+ * PagBank Webkul PagBank Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+$helper = $block->getMpHelper();
+if (!$helper->getIsSeparatePanel()):
+    $isPartner= $helper->isSeller();
+    $magentoCurrentUrl = $escaper->escapeUrl($block->getCurrentUrl());
+    ?>
+    <?php if ($isPartner): ?>
+        <li class="nav item 
+            <?= /* @noEscape */ strpos($magentoCurrentUrl, 'marketplace/pagbank/account/') ? "current":"";?>">
+            <?php if (strpos($magentoCurrentUrl, 'marketplace/pagbank/account') !== false): ?>
+                <strong><?= /* @noEscape */ __('PagBank Account Information') ?></strong>
+            <?php else: ?>
+                <a href="<?= $escaper->escapeUrl($block->getUrl('marketplace/pagbank/account', [
+                    '_secure' => $block->getRequest()->isSecure()
+                ])); ?>">
+                    <?= /* @noEscape */ __('PagBank Account Information') ?>
+                </a>
+            <?php endif; ?>
+        </li>
+    <?php endif; ?>
+<?php endif; ?>

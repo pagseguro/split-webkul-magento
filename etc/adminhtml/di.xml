@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PagBank Webkul PagBank Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Add PagBank Information in Sub Seller -->
+    <preference for="Webkul\Marketplace\Block\Adminhtml\Customer\Edit\Tab\PaymentInfo" type="PagBank\SplitWebkulMagento\Plugin\Block\Adminhtml\Customer\Edit\Tab\PagBankPaymentInfo" />
+</config>

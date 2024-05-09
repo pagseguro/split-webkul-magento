@@ -1,0 +1,116 @@
+<?php
+/**
+ * PagBank Webkul PagBank Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+/**
+ * @phpcs:ignoreFile
+ */ 
+
+/**
+ * @var $block \Webkul\Marketplace\Block\Account\Editprofile
+ */
+
+$helper = $this->helper(\Webkul\Marketplace\Helper\Data::class);
+$helperPags = $this->helper(\PagBank\SplitWebkulMagento\Helper\Data::class);
+$partner = $block->getPersistentData();
+
+if (empty($partner)) {
+    $partner=$helper->getSeller();
+}
+
+$address = $block->getUrl('', [
+    "_secure" => $block->getRequest()->isSecure()
+]);
+
+$isHttps = $block->getRequest()->isSecure();
+$new = preg_replace('/^(http:\/\/|https:\/\/)/i', '', $address);
+$state = $new. 'sec/'. $isHttps;
+
+if ($helperPags->getEnvironmentMode() === 'sandbox') {
+    $state = $state . '/sa/1';
+}
+
+
+$urlOAuth = $helperPags->getAppUrl($state);
+?>
+
+<div class="block block-dashboard-info">
+    <div class="block-title"><strong><?= /* @noEscape */ __('Payment Information') ?></strong></div>
+    <div class="block-content">
+        <div class="box box-information">
+            <strong class="box-title">
+                <span><?= /* @noEscape */ __('Authorize Sales') ?></span>
+            </strong>
+            <form action="<?= $escaper->escapeUrl($block->getUrl('marketplace/pagbank/savePaymentInfo', [
+                    "_secure" => $block->getRequest()->isSecure()
+                    ])) ?>" method="post" data-role="form-payment-validate" data-mage-init='{"validation":{}}'>
+                <div class="box-content">
+                    <p>
+                        <?= $block->escapeHtml(__('In order for us to send the money to your account, you need to authorize:')) ?>
+                    </p>
+                    <fieldset class="fieldset info">
+                        <div class="field">
+                            <a href='<?= $escaper->escapeUrl($urlOAuth); ?>' class="pag-bank-account-oauth">
+                                <span><?= $block->escapeHtml(__('Authorize Sales')) ?></span>
+                            </a>
+                        </div>
+                        <div class="field">
+                            <label><?= /* @noEscape */ __('Or Enter Manually') ?></label>
+                            <div class="control">
+                                <input type="text" class="input-text" name="pag_bank_account_id" id="pag-bank-account-id"
+                                    value="<?= $block->escapeHtml($partner['pag_bank_account_id']); ?>"/>
+                                <span class="note">
+                                    <span>
+                                        <?= /* @noEscape */ __('You can get your code from your PagBank account by <a href=\'%1\'>clicking here</a>.', 'https://conta.pagbank.com.br/getAccountId') ?>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="box-actions">
+                    <button class="action button wk-mp-btn" title="<?= /* @noEscape */ __('Save Payment') ?>" type="submit">
+                        <span>
+                            <span>
+                                <?= $block->escapeHtml(__('Save Payment')) ?>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="box box-newsletter">
+            <strong class="box-title">
+                <span><?= $block->escapeHtml(__('Don\'t have an account yet?')) ?></span>
+            </strong>
+            <div class="box-content">
+                <p>
+                    <?= $block->escapeHtml(__('We use PagBank solution for receiving your transactions.')) ?>
+                </p>
+                <?= $block->getBlockHtml('seller.formkey')?>
+                <?= $block->getBlockHtml('formkey')?>
+                <h3>
+                    <?= $block->escapeHtml(__('Discover the solutions that PagBank offers you:')) ?>
+                </h3>
+                <ul>
+                    <li>
+                        <?= $block->escapeHtml(__('The receipt of your sales will be automatic.')) ?>
+                    </li>
+                    <li>
+                        <?= $block->escapeHtml(__('You control your withdrawals directly in PagBank.')) ?>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-actions">
+                <a class="action pag-bank-create-account wk-mp-btn" href="https://cadastro.pagseguro.uol.com.br/">
+                    <span><?= $block->escapeHtml(__('Create your Account')) ?></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PagBank Webkul PagBank Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Marketplace Dashboard" design_abstraction="custom">
+    <referenceBlock name="seller_account_navigation">
+        <block class="Webkul\Marketplace\Block\Account\Navigation"  name="seller_account_navigation_pag_bank"  before="-">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">PagBank_SplitWebkulMagento::account/navigation.phtml</argument>
+            </action>
+        </block>
+    </referenceBlock>
+</page>

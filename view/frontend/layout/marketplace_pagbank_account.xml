@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * PagBank Webkul PagBank Module.
+ *
+ * Copyright © 2023 PagBank. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="marketplace_styles"/>
+    <update handle="customer_account"/>
+    <head>
+        <css src="Webkul_Marketplace::colorpicker/css/colorpicker.css"/>
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Marketplace PagBank Profile</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Webkul\Marketplace\Block\Account\Editprofile" name="marketplace_account_editprofile" template="PagBank_SplitWebkulMagento::account/pagbank_account_info.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>
