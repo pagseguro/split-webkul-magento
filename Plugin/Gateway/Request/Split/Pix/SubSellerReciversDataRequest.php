@@ -8,13 +8,13 @@
  * @license   See LICENSE for license details.
  */
 
-namespace PagBank\SplitWebkulMagento\Plugin\Gateway\Request\Split;
+namespace PagBank\SplitWebkulMagento\Plugin\Gateway\Request\Split\Pix;
 
 use Magento\Payment\Gateway\Data\PaymentDataObject;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use PagBank\SplitMagento\Gateway\Request\Split\BaseDataRequest;
-use PagBank\SplitMagento\Gateway\Request\Split\ReciversDataRequest;
+use PagBank\SplitMagento\Gateway\Request\Split\Pix\ReciversDataRequest;
 use PagBank\SplitWebkulMagento\Helper\Data as Helper;
 
 /**

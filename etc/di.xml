@@ -17,7 +17,7 @@
 
     <!-- Add Sub Seller to request in Pix -->
     <type name="PagBank\SplitMagento\Gateway\Request\Split\Pix\ReciversDataRequest">
-        <plugin name="pagbank_webkul_add_sub_seller" type="PagBank\SplitWebkulMagento\Plugin\Gateway\Request\Split\SubSellerReciversDataRequest" sortOrder="10" />
+        <plugin name="pagbank_webkul_add_sub_seller" type="PagBank\SplitWebkulMagento\Plugin\Gateway\Request\Split\Pix\SubSellerReciversDataRequest" sortOrder="10" />
     </type>
 
 
