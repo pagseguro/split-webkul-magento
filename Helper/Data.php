@@ -98,6 +98,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->eventManager = $eventManager;
         parent::__construct($context);
     }
+
     /**
      * Is Enabled
      *
@@ -113,6 +114,26 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         }
 
         return false;
+    }
+
+    /**
+     * Is Seller Liable
+     *
+     * @return bool
+     */
+    public function isSellerLiable()
+    {
+        return $this->splitConfig->getAddtionalValue('use_liable') ?? false;
+    }
+
+    /**
+     * Get Seller Charge Back
+     *
+     * @return int
+     */
+    public function getSellerChargeBack()
+    {
+        return $this->splitConfig->getAddtionalValue('use_charge_back') ?? 0;
     }
 
     /**
@@ -135,8 +156,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $commisionsShip = $this->getCommissionForShipping($order);
 
         $sellers = array_merge($commisionsProd, $commisionsShip);
-
         $sellerData = $this->normalizeSellers($sellers);
+        $this->logger->info(json_encode($sellerData));
 
         return $sellerData;
     }
@@ -157,12 +178,16 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
             if (array_key_exists($sellerId, $newValues)) {
                 $newValues[$sellerId]['pag_bank_amount'] += $seller['pag_bank_amount'];
+                $newValues[$sellerId]['pag_bank_liable'] = $this->isSellerLiable();
+                $newValues[$sellerId]['pag_bank_charge_back'] = $this->getSellerChargeBack();
             }
 
             if (!array_key_exists($sellerId, $newValues)) {
                 $newValues[$sellerId] = [
-                    'pag_bank_id'       => $seller['pag_bank_id'],
-                    'pag_bank_amount'   => $seller['pag_bank_amount'],
+                    'pag_bank_id'          => $seller['pag_bank_id'],
+                    'pag_bank_amount'      => $seller['pag_bank_amount'],
+                    'pag_bank_liable'      => $this->isSellerLiable(),
+                    'pag_bank_charge_back' => $this->getSellerChargeBack(),
                 ];
             }
         }

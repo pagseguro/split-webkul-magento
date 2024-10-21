@@ -54,19 +54,19 @@ $urlOAuth = $helperPags->getAppUrl($state);
                         <?= $block->escapeHtml(__('In order for us to send the money to your account, you need to authorize:')) ?>
                     </p>
                     <fieldset class="fieldset info">
-                        <div class="field">
+                        <!-- <div class="field">
                             <a href='<?= $escaper->escapeUrl($urlOAuth); ?>' class="pag-bank-account-oauth">
                                 <span><?= $block->escapeHtml(__('Authorize Sales')) ?></span>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="field">
-                            <label><?= /* @noEscape */ __('Or Enter Manually') ?></label>
+                            <label><?= /* @noEscape */ __('Enter Manually') ?></label>
                             <div class="control">
                                 <input type="text" class="input-text" name="pag_bank_account_id" id="pag-bank-account-id"
                                     value="<?= $block->escapeHtml($partner['pag_bank_account_id']); ?>"/>
                                 <span class="note">
                                     <span>
-                                        <?= /* @noEscape */ __('You can get your code from your PagBank account by <a href=\'%1\'>clicking here</a>.', 'https://conta.pagbank.com.br/getAccountId') ?>
+                                        <?= /* @noEscape */ __('You can get your code from your PagBank account by <a href=\'%1\'>clicking here</a>.', 'https://minhaconta.pagbank.com.br/venda-online/integracoes/identificador-de-marketplace') ?>
                                     </span>
                                 </span>
                             </div>
